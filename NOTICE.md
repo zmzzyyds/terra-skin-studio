@@ -4,13 +4,6 @@
 
 Terra Skin Studio（泰拉换肤工作室；启动器仍叫「泰拉终端 / Terra Terminal」）是一个本地、非商业的 Codex Desktop 外观工具。源代码由本项目独立编写。
 
-技术路线参考了以下 MIT 项目（仅参考思路，未复制其代码）：
-
-- `yushua0808-cpu/dragon-codex-boot` — WPF 播放启动视频，并用 DWM 缩略图把真实窗口嵌入动画。
-- `HeiGeAi/heige-codex-skin-studio` — 通过 Chrome DevTools Protocol 注入 CSS，不修改 `app.asar`。
-
-如果后续引入了上述项目的任何代码片段，必须在该文件或源文件中保留其 MIT 许可证与版权声明。
-
 ## 游戏素材
 
 《明日方舟》《明日方舟：终末地》的角色、名称、立绘、标志及相关素材版权归**鹰角网络 / Hypergryph / Gryphline** 所有。

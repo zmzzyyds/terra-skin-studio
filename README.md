@@ -380,11 +380,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File build\app\scripts\uninstall.
 - 应用内背景使用静态图片；MP4 只用于启动动画（动态背景留作后续可选功能）；
 - 官方立绘及衍生素材不随仓库/Release 分发。
 
-## 参考与致谢
+## 许可证
 
-技术路线参考了两个 MIT 项目（仅参考思路，代码为本项目独立实现）：
-
-- [yushua0808-cpu/dragon-codex-boot](https://github.com/yushua0808-cpu/dragon-codex-boot)：WPF + DWM 启动动画交接；
-- [HeiGeAi/heige-codex-skin-studio](https://github.com/HeiGeAi/heige-codex-skin-studio)：CDP 注入换肤、MSIX 回环处理。
-
-代码许可证见 [LICENSE](LICENSE)；游戏素材版权与来源见 [NOTICE.md](NOTICE.md) 和 [ASSET_SOURCES.md](ASSET_SOURCES.md)。
+代码使用 MIT 许可证，见 [LICENSE](LICENSE)。游戏素材版权与来源见 [NOTICE.md](NOTICE.md) 和 [ASSET_SOURCES.md](ASSET_SOURCES.md)。
