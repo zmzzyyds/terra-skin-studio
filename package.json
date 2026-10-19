@@ -1,0 +1,23 @@
+{
+  "name": "terra-skin-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Terra Skin Studio - Arknights / Arknights: Endfield theme studio for OpenAI Codex Desktop on Windows",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "list": "node src/injector/cli.mjs list",
+    "status": "node src/injector/cli.mjs status",
+    "doctor": "node src/injector/cli.mjs doctor",
+    "apply": "node src/injector/cli.mjs apply",
+    "restore": "node src/injector/cli.mjs restore",
+    "panel": "node src/injector/cli.mjs panel",
+    "screenshot": "node src/injector/cli.mjs screenshot",
+    "gen:posters": "node tools/gen/render-posters.mjs",
+    "gen:motion": "node tools/gen/render-motion.mjs",
+    "gen:videos": "node tools/gen/render-videos.mjs",
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build.ps1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "activeTheme": "si",
+  "skinEnabled": true,
+  "bootEnabled": true,
+  "cdpPort": 9341,
+  "panelPort": 9342,
+  "opacity": 0.88,
+  "clarity": 0.6,
+  "muteBoot": false,
+  "readability": "auto",
+  "appearance": "dark",
+  "handoff": "restore"
+}

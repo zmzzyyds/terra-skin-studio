@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="terra-token" content="__TERRA_TOKEN__">
+  <title>泰拉终端 // Terra Terminal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-stripes top" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <i class="diamond"></i>
+      <div>
+        <h1>TERRA TERMINAL</h1>
+        <p>泰拉终端 · Codex 主题工作室</p>
+      </div>
+    </div>
+    <div class="chips">
+      <span class="chip" id="chip-codex"><i class="dot"></i><span>Codex</span><b>--</b></span>
+      <span class="chip" id="chip-cdp"><i class="dot"></i><span>CDP</span><b>--</b></span>
+      <span class="chip" id="chip-loopback"><i class="dot"></i><span>回环</span><b>--</b></span>
+      <span class="chip" id="chip-theme"><i class="dot"></i><span>主题</span><b>--</b></span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="themes-panel">
+      <div class="section-head">
+        <div>
+          <h2>主题库</h2>
+          <p>点击卡片即应用；自定义主题会同步到启动动画。</p>
+        </div>
+        <button class="btn ghost" id="refresh-btn" type="button">刷新</button>
+      </div>
+      <div class="theme-grid" id="theme-grid" aria-live="polite"></div>
+      <div class="empty" id="theme-empty" hidden>还没有可用主题。</div>
+    </section>
+
+    <aside class="side">
+      <section class="panel">
+        <div class="panel-head">
+          <h3>运行状态</h3>
+          <span class="mono" id="status-time">--</span>
+        </div>
+        <dl class="status-list">
+          <div><dt>Codex 包</dt><dd id="status-package">--</dd></div>
+          <div><dt>调试端口</dt><dd id="status-port">--</dd></div>
+          <div><dt>页面</dt><dd id="status-target">--</dd></div>
+          <div><dt>最近注入</dt><dd id="status-applied">--</dd></div>
+          <div><dt>最近错误</dt><dd id="status-error" class="error">--</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h3>操作</h3></div>
+        <div class="actions">
+          <button class="btn" id="btn-launch" type="button">启动 Codex</button>
+          <button class="btn warn" id="btn-restart" type="button">重启并应用</button>
+          <button class="btn danger" id="btn-restore" type="button">还原原生界面</button>
+          <button class="btn ghost" id="btn-loopback" type="button">启用回环豁免</button>
+          <button class="btn ghost" id="btn-folder" type="button">打开主题文件夹</button>
+          <button class="btn ghost" id="btn-switcher" type="button">显示主题胶囊</button>
+          <button class="btn ghost" id="btn-logs" type="button">刷新日志</button>
+        </div>
+        <p class="hint" id="action-hint">首次换肤需要启用一次回环豁免（UAC），随后重启 Codex。</p>
+        <p class="hint">“主题胶囊”是 Codex 右下角的快捷换肤入口：点开可选主题、还原原生或隐藏；隐藏后可在面板点“显示主题胶囊”，或在 Codex 里按 Ctrl+Shift+T 恢复。</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h3>外观参数</h3></div>
+        <label class="field">
+          <span>面板不透明度 <b id="opacity-value">88%</b></span>
+          <input type="range" id="opacity" min="50" max="100" step="1" value="88">
+        </label>
+        <label class="field">
+          <span>背景清晰度 <b id="clarity-value">60%</b></span>
+          <input type="range" id="clarity" min="0" max="100" step="1" value="60">
+        </label>
+        <label class="field">
+          <span>背景风格</span>
+          <select id="appearance">
+            <option value="dark">深色 HUD</option>
+            <option value="paper">纸白平面</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>正文可读性</span>
+          <select id="readability">
+            <option value="auto">自动</option>
+            <option value="on">始终加强</option>
+            <option value="off">关闭</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>启动动画</span>
+          <select id="boot-enabled">
+            <option value="true">启用</option>
+            <option value="false">关闭</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>启动音效</span>
+          <select id="mute-boot">
+            <option value="false">播放</option>
+            <option value="true">静音</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>交接后窗口</span>
+          <select id="handoff">
+            <option value="restore">恢复上一次窗口大小</option>
+            <option value="maximize">最大化 Codex</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h3>自定义主题</h3>
+          <button class="btn ghost small" id="custom-toggle" type="button">展开</button>
+        </div>
+        <form id="custom-form" class="custom-form" hidden>
+          <label class="field"><span>名称</span><input id="custom-name" maxlength="40" required placeholder="例如：我的干员"></label>
+          <label class="field"><span>副标题</span><input id="custom-subtitle" maxlength="80" placeholder="MY OPERATOR // TERRA"></label>
+          <div class="field-row">
+            <label class="field"><span>系列</span>
+              <select id="custom-series">
+                <option value="arknights">明日方舟</option>
+                <option value="endfield">终末地</option>
+                <option value="custom" selected>自定义</option>
+              </select>
+            </label>
+            <label class="field"><span>装饰</span>
+              <select id="custom-decor">
+                <option value="custom" selected>自定义</option>
+                <option value="endfield">终末地</option>
+                <option value="rhodes">罗德岛</option>
+                <option value="sui">岁相</option>
+                <option value="goldenglow">澄闪</option>
+              </select>
+            </label>
+          </div>
+          <div class="color-row">
+            <label class="field color"><span>主色</span><input type="color" id="custom-accent" value="#F2C94C"></label>
+            <label class="field color"><span>辅色</span><input type="color" id="custom-secondary" value="#7FE7FF"></label>
+            <label class="field color"><span>表面</span><input type="color" id="custom-surface" value="#0A0F14"></label>
+            <label class="field color"><span>文字</span><input type="color" id="custom-text" value="#EAF2F6"></label>
+          </div>
+          <label class="field"><span>背景图（JPG/PNG/WebP）</span><input type="file" id="custom-image" accept="image/jpeg,image/png,image/webp" required></label>
+          <button class="btn ghost small" id="custom-pick-colors" type="button">从背景图取色</button>
+          <label class="field"><span>启动视频（MP4，可选）</span><input type="file" id="custom-video" accept="video/mp4"></label>
+          <button class="btn primary" id="custom-submit" type="submit">创建并应用</button>
+          <p class="hint">图片会在浏览器内裁切并压缩到 1920×1080，不会上传原图。先选背景图，再点“从背景图取色”可自动填主色/辅色/表面/文字。</p>
+          <p class="hint">MP4 会原样作为启动动画（应用内上限 64MB，分块注入；超过则回退海报）。如果它的颜色和主题不一致，可以留空 MP4，让启动器用背景图生成海报动画，或先用 tools/gen/render-motion.mjs 按新颜色生成视频。</p>
+        </form>
+      </section>
+
+      <section class="panel logs-panel">
+        <div class="panel-head"><h3>日志</h3><span class="mono" id="log-file">--</span></div>
+        <pre class="logs" id="logs">--</pre>
+      </section>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

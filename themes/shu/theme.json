@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "shu",
+  "name": "黍",
+  "subtitle": "SHU // RHODES ISLAND",
+  "series": "arknights",
+  "colors": {
+    "accent": "#D8B45A",
+    "secondary": "#6FCF97",
+    "surface": "#0C1410",
+    "text": "#F2EFE3",
+    "mode": "dark"
+  },
+  "copy": {
+    "brand": "RHODES ISLAND // SUI",
+    "headline": "黍",
+    "tagline": "岁序更替，五谷丰登 // HARVEST PROTOCOL"
+  },
+  "background": {
+    "image": "hero.jpg",
+    "focus": {
+      "x": 66,
+      "y": 26
+    },
+    "tint": "#0C1410",
+    "tintOpacity": 0.3
+  },
+  "decor": "sui",
+  "boot": {
+    "mode": "handoff",
+    "video": "boot.mp4",
+    "poster": "poster.jpg",
+    "width": 1920,
+    "height": 1080,
+    "holdAt": 10,
+    "transitionStart": 12.5,
+    "transitionEnd": 15,
+    "maxWaitSeconds": 60,
+    "volume": 0.75,
+    "screenFrames": [
+      {
+        "time": 12.5,
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      },
+      {
+        "time": 15,
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      }
+    ],
+    "handoffStyle": "wipe",
+    "loopStart": 10,
+    "loopEnd": 12
+  },
+  "preview": "preview.jpg"
+}

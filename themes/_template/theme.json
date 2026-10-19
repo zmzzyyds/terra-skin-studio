@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "template",
+  "name": "自定义主题",
+  "subtitle": "CUSTOM // TERRA TERMINAL",
+  "series": "custom",
+  "colors": {
+    "accent": "#F2C94C",
+    "secondary": "#7FE7FF",
+    "surface": "#0A0F14",
+    "text": "#EAF2F6",
+    "mode": "dark"
+  },
+  "copy": {
+    "brand": "TERRA TERMINAL // CUSTOM",
+    "headline": "OPERATOR",
+    "tagline": "PROTOCOL READY"
+  },
+  "background": {
+    "image": "hero.jpg",
+    "focus": { "x": 50, "y": 30 },
+    "tint": "#0A0F14",
+    "tintOpacity": 0.3
+  },
+  "decor": "custom",
+  "boot": {
+    "mode": "poster",
+    "poster": "poster.jpg",
+    "width": 1920,
+    "height": 1080,
+    "holdAt": 0,
+    "transitionStart": 0,
+    "transitionEnd": 0,
+    "maxWaitSeconds": 60,
+    "volume": 0
+  },
+  "preview": "preview.jpg"
+}

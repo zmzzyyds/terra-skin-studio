@@ -1,0 +1,31 @@
+node_modules/
+build/
+logs/
+tmp/
+dist/
+*.user
+
+# Build-time media tools and browser profiles (large, not source)
+tools/gen/bin/
+tools/gen/node_modules/
+tools/gen/package-lock.json
+
+# Local screenshots may contain official art or personal project names
+docs/images/
+
+# Official character art and derivatives stay local; do not publish them.
+themes/*/art/
+themes/*/hero.jpg
+themes/*/hero.jpeg
+themes/*/hero.png
+themes/*/hero.webp
+themes/*/hero-paper.jpg
+themes/*/poster.jpg
+themes/*/poster.jpeg
+themes/*/poster.png
+themes/*/preview.jpg
+themes/*/preview.jpeg
+themes/*/preview.png
+themes/*/boot.mp4
+themes/*/splash.mp4
+!themes/_template/**

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "goldenglow",
+  "name": "澄闪",
+  "subtitle": "GOLDENGLOW // RHODES ISLAND",
+  "series": "arknights",
+  "colors": {
+    "accent": "#FF8FC7",
+    "secondary": "#6FE3FF",
+    "surface": "#1A0F1C",
+    "text": "#FFF3FA",
+    "mode": "dark"
+  },
+  "copy": {
+    "brand": "RHODES ISLAND // OPERATOR",
+    "headline": "澄闪",
+    "tagline": "电光石火 // GOLDENGLOW"
+  },
+  "background": {
+    "image": "hero.jpg",
+    "focus": {
+      "x": 64,
+      "y": 24
+    },
+    "tint": "#1A0F1C",
+    "tintOpacity": 0.28
+  },
+  "decor": "goldenglow",
+  "boot": {
+    "mode": "handoff",
+    "video": "boot.mp4",
+    "poster": "poster.jpg",
+    "width": 1920,
+    "height": 1080,
+    "holdAt": 10,
+    "transitionStart": 12.5,
+    "transitionEnd": 15,
+    "maxWaitSeconds": 60,
+    "volume": 0.75,
+    "screenFrames": [
+      {
+        "time": 12.5,
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      },
+      {
+        "time": 15,
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      }
+    ],
+    "handoffStyle": "wipe",
+    "loopStart": 10,
+    "loopEnd": 12
+  },
+  "preview": "preview.jpg"
+}

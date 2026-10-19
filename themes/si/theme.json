@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "si",
+  "name": "祀",
+  "subtitle": "SI // ENDFIELD",
+  "series": "endfield",
+  "colors": {
+    "accent": "#F2C94C",
+    "secondary": "#7FE7FF",
+    "surface": "#0A0F14",
+    "text": "#EAF2F6",
+    "mode": "dark"
+  },
+  "copy": {
+    "brand": "ENDFIELD // TALOS-II",
+    "headline": "祀",
+    "tagline": "协议已建立 // PROTOCOL ESTABLISHED"
+  },
+  "background": {
+    "image": "hero.jpg",
+    "focus": {
+      "x": 68,
+      "y": 28
+    },
+    "tint": "#0A0F14",
+    "tintOpacity": 0.3
+  },
+  "decor": "endfield",
+  "boot": {
+    "mode": "handoff",
+    "video": "boot.mp4",
+    "poster": "poster.jpg",
+    "width": 1920,
+    "height": 1080,
+    "holdAt": 10,
+    "transitionStart": 12.5,
+    "transitionEnd": 15,
+    "maxWaitSeconds": 60,
+    "volume": 0.75,
+    "screenFrames": [
+      {
+        "time": 12.5,
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      },
+      {
+        "time": 15,
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      }
+    ],
+    "handoffStyle": "wipe",
+    "loopStart": 10,
+    "loopEnd": 12
+  },
+  "preview": "preview.jpg"
+}
