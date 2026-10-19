@@ -13,19 +13,6 @@ tools/gen/package-lock.json
 # Local screenshots may contain official art or personal project names
 docs/images/
 
-# Official character art and derivatives stay local; do not publish them.
-themes/*/art/
-themes/*/hero.jpg
-themes/*/hero.jpeg
-themes/*/hero.png
-themes/*/hero.webp
-themes/*/hero-paper.jpg
-themes/*/poster.jpg
-themes/*/poster.jpeg
-themes/*/poster.png
-themes/*/preview.jpg
-themes/*/preview.jpeg
-themes/*/preview.png
-themes/*/boot.mp4
-themes/*/splash.mp4
-!themes/_template/**
+# Generated render pages embed source artwork and are not runtime theme assets.
+themes/*/art/*.html
+themes/*/art/motion-frames/

@@ -1,6 +1,6 @@
 # 制作主题
 
-主题由一个目录、一份 `theme.json` 和可选媒体文件组成。项目当前随源码跟踪四个内置主题清单及 `themes/_template/theme.json`；`.gitignore` 排除了 `art/`、背景图、海报、预览图和视频。因此，从 GitHub 克隆后，内置主题配置仍在，但需要自行添加有权使用的素材。
+主题由一个目录、一份 `theme.json` 和可选媒体文件组成。仓库跟踪四个内置主题清单，以及各主题的原始图源、背景/海报/预览图和启动视频。`themes/*/art/*.html` 与 `motion-frames/` 是生成过程的中间文件，仍由 `.gitignore` 排除。
 
 ## 通过控制面板创建（推荐）
 
@@ -95,7 +95,7 @@ New-Item -ItemType Directory -Path themes\my-theme
 | `hero-paper.jpg` | 可选纸白模式背景 |
 | `art/source.png` | 可选的本地原始素材，供生成脚本使用 |
 
-代码仓库忽略内置主题的图像、视频和 `art/` 文件。这既减小仓库体积，也避免把未经授权的游戏立绘及其衍生素材发布到公开仓库。上传到远端前，请确认素材来源和授权。
+内置主题图片和视频会随仓库分发。根目录 `LICENSE` 说明软件代码的 MIT 许可；它不会自动授予主题图像、角色立绘或视频的使用权。添加或替换媒体前，必须确认公开再分发授权，并按对应授权条件使用。
 
 ## 本地生成海报和动画
 
@@ -116,4 +116,4 @@ $env:TERRA_MOTION_CRF = "27"
 node tools\gen\render-motion.mjs my-theme
 ```
 
-`TERRA_MOTION_SCALE` 可指定 ffmpeg 输出缩放；`CHROME_PATH` 可指定 Chrome/Edge 可执行文件路径。生成的图片和视频仍被 Git 忽略。
+`TERRA_MOTION_SCALE` 可指定 ffmpeg 输出缩放；`CHROME_PATH` 可指定 Chrome/Edge 可执行文件路径。生成的 JPG/MP4 属于主题资源，会被 Git 跟踪；生成的 HTML 页面和逐帧目录仍被忽略。

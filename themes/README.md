@@ -11,12 +11,12 @@ themes/<id>/
   preview.jpg
   splash.mp4         # 应用内启动动画（10s 1080p；自定义可不限时长，≤64MB）
   boot.mp4           # 独立动画（16s 1080p，--external）
-  art/source.png      # 可选：原始立绘，仅本地
+  art/source.png      # 可选：生成用原始图像；提交前确认公开再分发授权
 ```
 
-> 公开仓库只包含 `theme.json`，不包含官方立绘、`hero.*`、`splash.mp4`、`boot.mp4` 等素材。请使用自己的/授权素材；最方便的是面板“自定义主题”。
+> 仓库包含内置主题的 `theme.json`、图像和视频。生成器产生的 HTML 页面及逐帧文件仅供本机制作，不属于运行时主题资源。
 
-- `theme.json`：格式见根目录 README；
+- `theme.json`：格式见[主题制作说明](../docs/THEMES.md)；
 - `hero.jpg`：应用内背景，建议 1920×1080；
 - `poster.jpg`：启动动画海报，建议 1920×1080；
 - `preview.jpg`：面板卡片 640×360；
@@ -52,9 +52,9 @@ node tools\gen\render-posters.mjs
 node tools\gen\render-motion.mjs si
 ```
 
-## 素材版权
+## 素材与授权
 
-官方立绘及其衍生文件（`hero.jpg`、`poster.jpg`、`preview.jpg`、`splash.mp4`、`boot.mp4`）不随仓库分发，`.gitignore` 已排除。来源见根目录 [ASSET_SOURCES.md](../ASSET_SOURCES.md)。公开仓库前请替换为原创或授权素材。
+内置主题的源图、背景图、预览图和视频随仓库分发。根目录 `LICENSE` 适用于软件代码，不自动授予主题媒体的版权或再利用许可。新增或替换主题素材前，必须确认有公开再分发授权，并遵守该授权的署名和用途要求。
 
 ## 自定义主题
 

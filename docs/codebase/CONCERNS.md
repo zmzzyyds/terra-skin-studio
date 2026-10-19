@@ -8,6 +8,7 @@
 | 中 | Codex DOM 选择器可能随上游更新变化 | `src/injector/skin-css.mjs`、`injector.mjs` | 页面内部布局变化会让背景、透明度或装饰显示不完整 | Codex 更新后运行 `doctor` 并检查关键页面，再调整选择器 |
 | 中 | 主题/状态 schema 在 C# 和 Node 中有两份实现 | `src/boot/Models.cs`、`src/injector/theme-store.mjs` | 同一份配置可能在两条运行路径被不同地规范化 | 修改配置字段时同步检查两侧；考虑后续共用 schema/样例验证 |
 | 中 | 自动化测试和 CI 缺失 | `package.json`、仓库没有 CI 配置 | 纯逻辑改动也可能要等真实 Codex 环境才能发现回归 | 先为 schema、路径和状态迁移补充离线检查，再定义发布前手动清单 |
+| 低 | 主题媒体与代码使用不同许可边界 | `LICENSE`、`themes/README.md` | MIT 软件许可可能被误读为也覆盖角色图像和视频 | 保持媒体授权与代码许可证分开说明；加入新素材前确认可公开再分发 |
 | 低 | 启动器与样式生成文件较大 | `src/boot/BootWindow.cs`（约 1,200 行）、`src/injector/skin-css.mjs`（约 750 行） | 局部功能交织，修改动画或 CSS 时可能影响相关状态 | 保持小范围修改；把新行为拆到独立函数或模块 |
 
 ## 2. 技术债务
@@ -25,7 +26,7 @@
 | 本机 CDP 端口可执行页面调试命令 | 本地权限边界 | 启动参数使用 `127.0.0.1`；客户端要求 WebSocket host/port 与页面路径匹配；查询端口所有者 | 不应将 CDP 端口暴露到 LAN、代理或公网 | `src/boot/Activation.cs`、`src/injector/cdp.mjs`、`codex-app.mjs` |
 | 本机面板可启动/重启 Codex 和写入主题 | 本机 API | 监听 `127.0.0.1`、生成随机 token、校验 Host/Origin、限制上传类型/大小并检查文件头 | 假设机器上的本地用户进程可信；服务不是远程多用户面板 | `src/injector/panel-server.mjs` |
 | 回环豁免修改 Windows AppContainer 设置 | 系统配置 | 指定 Codex package family name；通过 UAC 提权；提供 `-Remove` | 用户需知晓该系统设置并可在卸载时撤销 | `scripts/enable-loopback.ps1`、`scripts/uninstall.ps1` |
-| 本地媒体源与公开仓库内容混淆 | 分发边界 | `.gitignore` 忽略主题 `art/`、背景/海报/预览和视频 | 克隆者不会自动得到这些素材；维护者需继续审查 staged 文件 | `.gitignore`、`themes/README.md` |
+| 主题媒体授权与源码许可混淆 | 分发边界 | `.gitignore` 跟踪内置媒体；`LICENSE` 是软件许可证 | MIT 条款不会自动授予主题媒体的其他使用权 | 按媒体授权范围分发，并在新增素材前确认许可 | `LICENSE`、`.gitignore`、`themes/README.md` |
 
 ## 4. 性能与扩展
 
@@ -37,7 +38,7 @@
 
 ## 5. 脆弱区域与历史变化
 
-最近 Git 历史只有少数提交；当前样本不足以判断哪些源文件是持续高 churn 区域。扫描结果中的巨大文件主要是本机被忽略的媒体/渲染素材，不应当作源码复杂度指标。
+最近 Git 历史只有少数提交；当前样本不足以判断哪些源文件是持续高 churn 区域。扫描结果中的巨大文件主要是媒体或内嵌素材的生成 HTML，不应当作源码复杂度指标。
 
 | 区域 | 脆弱原因 | 历史信号 | 安全修改方式 |
 |---|---|---|---|

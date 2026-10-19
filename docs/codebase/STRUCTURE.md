@@ -7,7 +7,7 @@
 | `src/boot/` | C# 启动器、窗口与 Windows 集成 | `src/boot/Program.cs`、`Activation.cs`、`BootWindow.cs` |
 | `src/injector/` | Node CLI、CDP、主题存储、控制器、HTTP API 和注入脚本 | `src/injector/cli.mjs`、`controller.mjs`、`panel-server.mjs` |
 | `panel/` | 本地面板页面、交互逻辑和样式 | `panel/index.html`、`app.js`、`style.css` |
-| `themes/` | 内置主题清单、主题模板和主题作者说明 | `themes/_template/theme.json`、`themes/README.md` |
+| `themes/` | 内置主题清单、主题媒体、主题模板和作者说明 | `themes/_template/theme.json`、`themes/README.md` |
 | `config/` | 示例状态 JSON | `config/state.example.json` |
 | `scripts/` | 构建、启动、关闭、回环配置与卸载脚本 | `scripts/*.ps1`、`scripts/start.bat` |
 | `tools/gen/` | 仅构建期使用的海报和视频生成脚本 | `tools/gen/README.md`、`render-*.mjs` |
@@ -15,7 +15,7 @@
 | `package.json` | Node 版本要求和命令入口 | `package.json` |
 | `LICENSE` | MIT 许可证文本 | `LICENSE` |
 
-本机还可能有 `.gitignore` 排除的 `build/`、`tmp/`、媒体素材和工具二进制。这些不是可移植的源码依赖。
+内置主题图像和视频在 `themes/<id>/` 中并随仓库跟踪；`build/`、`tmp/`、`tools/gen/bin/` 和 `themes/*/art/*.html` 仍由 `.gitignore` 排除。它们是构建或生成产物，不是运行时代码依赖。
 
 ## 2. 入口点
 

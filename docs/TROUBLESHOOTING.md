@@ -43,7 +43,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\enable-loopback.ps1 
 
 ## 主题应用后没有背景或启动动画
 
-`npm run list` 会显示 `no-hero`、`no-video` 等状态。仓库只跟踪主题配置，图片和视频被 `.gitignore` 排除；克隆仓库后需要按[制作主题](THEMES.md)添加自有或已获授权素材。
+`npm run list` 会显示 `no-hero`、`no-video` 等状态。内置媒体现在随仓库跟踪；若仍显示缺少素材，检查对应 `themes/<id>/theme.json` 路径是否与文件名一致，并确认 `build\app\themes\<id>` 含有这些文件。修改源码主题后重新运行 `npm run build`。
 
 应用内动画最多通过 CDP 注入 64 MiB 视频；较大视频会改用背景图动画。若要播放完整的大视频，可尝试 `TerraBoot.exe --theme <主题id> --external`。当应用内视频无法解码时，也会回退到背景图。
 
