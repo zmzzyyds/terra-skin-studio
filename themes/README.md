@@ -58,4 +58,4 @@ node tools\gen\render-motion.mjs si
 
 ## 自定义主题
 
-普通用户不需要手动改这里：控制面板的“自定义主题”会把图片和可选 MP4 写到 `%LOCALAPPDATA%\TerraStudio\themes\`，内置主题目录保持只读。
+普通用户不需要手动改这里：控制面板的“自定义主题”会把图片和可选 MP4 写到 `%LOCALAPPDATA%\ArknightsPRTS\themes\`，内置主题目录保持只读。

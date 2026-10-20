@@ -27,13 +27,13 @@
 
 - Node 边界通常抛出 `Error`；CLI 顶层捕获并打印 `错误：...`，HTTP API 将失败序列化为 JSON 错误响应。
 - 控制器通过 `createLogger()` 输出 INFO/WARN/ERROR，日志包含 ISO 时间；C# logger 使用本地时间和级别标签。
-- 日志分别写入 `%LOCALAPPDATA%\TerraStudio\logs\controller.log` 与 `boot.log`，约 2 MiB 后保留一份 `.1`。
+- 日志分别写入 `%LOCALAPPDATA%\ArknightsPRTS\logs\controller.log` 与 `boot.log`，约 2 MiB 后保留一份 `.1`。
 - 现有日志代码未定义统一的敏感字段脱敏策略；新增日志不要写入用户主题图片、令牌或完整上传内容。
 
 ## 5. 测试约定
 
 - 仓库未发现 Node/C# 自动化测试文件、测试框架或 mock 配置。
-- 启动器有 `TerraBoot.exe --self-test`，用于校验主题清单和外部素材/交接关键帧；它不是独立的单元测试套件。
+- 启动器有 `ArknightsPRTS.exe --self-test`，用于校验主题清单和外部素材/交接关键帧；它不是独立的单元测试套件。
 - 暂无覆盖率阈值或 CI 测试规则。
 
 ## 6. 证据

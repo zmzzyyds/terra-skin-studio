@@ -2,7 +2,7 @@
 
 ## 项目做什么
 
-Terra Skin Studio 为 Windows 版 OpenAI Codex Desktop 注入主题样式，并提供启动动画和本机控制面板。它通过 Codex 的 Chromium DevTools Protocol（CDP）连接运行中的界面；启动器不会改写 Codex 安装目录。
+Arknights PRTS 为 Windows 版 OpenAI Codex Desktop 注入主题样式，并提供启动动画和本机控制面板。它通过 Codex 的 Chromium DevTools Protocol（CDP）连接运行中的界面；启动器不会改写 Codex 安装目录。
 
 ## 环境要求
 
@@ -13,7 +13,7 @@ Terra Skin Studio 为 Windows 版 OpenAI Codex Desktop 注入主题样式，并�
 | 构建启动器 | Windows PowerShell 和 .NET Framework 4.8 x64 编译器 `csc.exe` | `scripts/build.ps1`、`src/boot/app.config` |
 | 素材生成（可选） | Chrome 或 Edge、`tools/gen/bin/ffmpeg.exe`；旧视频脚本还会用到 `ffprobe.exe` 和 Consolas | `tools/gen/README.md`、`tools/gen/render-*.mjs` |
 
-Node 控制器使用 Node 内置模块；项目没有运行时 npm 依赖，也没有 `package-lock.json`。普通构建不需要执行 `npm install`。
+Node 控制器使用 Node 内置模块；项目没有运行时 npm 依赖，也没有 `package-lock.json`。普通构建不需要执行 `npm install`。现有动画和背景素材不随本次品牌改名改动。
 
 ## 从源码构建并启动
 
@@ -23,7 +23,7 @@ Node 控制器使用 Node 内置模块；项目没有运行时 npm 依赖，也�
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\build.ps1
 ```
 
-产物在 `build\app\`。构建脚本用系统自带的 .NET Framework 编译器生成 `TerraBoot.exe`，并复制控制面板、Node 控制器、主题配置和相关脚本。脚本会尝试从 `%ProgramFiles%\nodejs\node.exe` 复制 Node；若不存在，运行时需要从 `PATH` 找到 `node.exe`。
+产物在 `build\app\`。构建脚本用系统自带的 .NET Framework 编译器生成 `ArknightsPRTS.exe`，并复制控制面板、Node 控制器、主题配置和相关脚本。脚本会尝试从 `%ProgramFiles%\nodejs\node.exe` 复制 Node；若不存在，运行时需要从 `PATH` 找到 `node.exe`。
 
 首次注入前，为商店版 Codex 添加一次本机回环豁免。可从源码目录执行：
 
@@ -36,14 +36,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\enable-loopback.ps1
 启动方式：
 
 ```text
-build\app\泰拉终端.bat
+build\app\启动PRTS.bat
 ```
 
-或直接运行 `build\app\TerraBoot.exe`。启动器会通过 CDP 启动或连接 Codex，并尝试播放应用内动画。若 Codex 已经运行但没有调试端口，启动器会询问是否关闭并重启；关闭应用可能丢失未发送的输入，请先保存。
+或直接运行 `build\app\ArknightsPRTS.exe`。启动器会通过 CDP 启动或连接 Codex，并尝试播放应用内动画。若 Codex 已经运行但没有调试端口，启动器会询问是否关闭并重启；关闭应用可能丢失未发送的输入，请先保存。
 
 ## 打开控制面板
 
-双击 `build\app\打开控制面板.bat`，或在浏览器打开：
+双击 `build\app\打开PRTS控制面板.bat`，或在浏览器打开：
 
 ```text
 http://127.0.0.1:9342/
@@ -53,7 +53,7 @@ http://127.0.0.1:9342/
 
 ## 日常操作
 
-- 点击面板主题卡片，或使用 Codex 窗口内的 `TERRA` 主题胶囊切换主题。
+- 点击面板主题卡片，或使用 Codex 窗口内的 `PRTS` 主题胶囊切换主题。
 - 面板的“外观参数”可调节透明度、背景清晰度、深色/纸白风格、文字可读性、启动动画和静音选项。
 - “还原原生界面”会移除注入的样式；控制器和面板仍可运行，之后可再次应用主题。
 - 完整主题编辑说明见[制作主题](THEMES.md)。
@@ -77,7 +77,7 @@ http://127.0.0.1:9342/
 
 ## 本机数据位置
 
-运行数据默认写入 `%LOCALAPPDATA%\TerraStudio\`：
+运行数据默认写入 `%LOCALAPPDATA%\ArknightsPRTS\`。首次升级前先退出旧版控制面板/控制器；新版本启动时会将已有 `%LOCALAPPDATA%\TerraStudio\` 目录迁移到这里。若迁移遇到文件占用或权限问题，程序会继续使用旧目录以保留现有数据：
 
 - `state.json`：主题、外观、端口等设置。
 - `themes\`：面板创建的自定义主题。

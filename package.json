@@ -1,9 +1,9 @@
 {
-  "name": "terra-skin-studio",
+  "name": "arknights-prts",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Terra Skin Studio - Arknights / Arknights: Endfield theme studio for OpenAI Codex Desktop on Windows",
+  "description": "明日方舟 PRTS (Arknights PRTS) - a Windows theme studio for OpenAI Codex Desktop",
   "engines": {
     "node": ">=22"
   },

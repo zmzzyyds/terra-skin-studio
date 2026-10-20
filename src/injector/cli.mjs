@@ -49,7 +49,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  console.log(`泰拉终端 / Terra Terminal
+  console.log(`明日方舟 PRTS / Arknights PRTS
 
 用法:
   node src/injector/cli.mjs panel [--headless] [--no-open] [--no-panel]
@@ -205,16 +205,21 @@ async function commandPanel(options) {
       console.log(`控制面板：${info.url}`);
     } catch (error) {
       if (error.code === "EADDRINUSE") {
+        let existingPanelApp = null;
         try {
           const response = await fetch(`http://127.0.0.1:${options.panelPort}/api/ping`, {
             signal: AbortSignal.timeout(2000),
           });
           const data = await response.json();
-          if (data.app === "terra-studio") {
-            console.log(`控制面板已经在运行：http://127.0.0.1:${options.panelPort}/`);
-            return;
-          }
+          existingPanelApp = data.app;
         } catch {}
+        if (existingPanelApp === "arknights-prts") {
+          console.log(`PRTS 控制面板已经在运行：http://127.0.0.1:${options.panelPort}/`);
+          return;
+        }
+        if (existingPanelApp === "terra-studio") {
+          throw new Error("检测到旧版泰拉终端控制器仍在运行。请先退出旧面板，再启动 PRTS 完成数据迁移。");
+        }
       }
       throw error;
     }

@@ -7,7 +7,7 @@ import { defaultStore } from "./theme-store.mjs";
 // In-app splash videos are transferred as base64 chunks through CDP, then
 // rebuilt into a Blob in the renderer. 64MB keeps startup latency reasonable
 // while covering normal 10-30s 1080p clips; full-size videos can still use
-// TerraBoot --external.
+// ArknightsPRTS --external.
 const MAX_VIDEO_BYTES = 64 * 1024 * 1024;
 const CHUNK_CHARS = 512 * 1024;
 const MAX_HERO_BYTES = 8 * 1024 * 1024;
@@ -109,7 +109,7 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
     const payload = {
       name: theme.name,
       subtitle: theme.subtitle || "",
-      brand: theme.copy?.brand || "TERRA TERMINAL",
+      brand: theme.copy?.brand || "PRTS",
       tagline: theme.copy?.tagline || "",
       accent: theme.colors?.accent || "#F2C94C",
       text: theme.colors?.text || "#EAF2F6",

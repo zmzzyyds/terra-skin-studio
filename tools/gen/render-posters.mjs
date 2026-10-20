@@ -204,10 +204,10 @@ function buildHtml(theme, artDataUrl, { hero, paper = false }) {
     ${theme.decor === "goldenglow" ? '<div class="bokeh"></div>' : ""}
     <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
     <div class="index">${index}</div>
-    <div class="rail">${escapeHtml(theme.series?.toUpperCase() ?? "TERRA")} // OPERATOR // ${escapeHtml(theme.id.toUpperCase())}</div>
+    <div class="rail">${escapeHtml(theme.series?.toUpperCase() ?? "PRTS")} // OPERATOR // ${escapeHtml(theme.id.toUpperCase())}</div>
     <div class="ticks" aria-hidden="true">${ticksHtml()}</div>
     <div class="content">
-      <div class="brand"><i class="diamond"></i>${escapeHtml(theme.copy?.brand ?? "TERRA TERMINAL")}</div>
+      <div class="brand"><i class="diamond"></i>${escapeHtml(theme.copy?.brand ?? "PRTS")}</div>
       <div class="series">${escapeHtml(theme.subtitle ?? "")}</div>
       <div class="${headlineClass}">${escapeHtml(theme.name)}</div>
       <div class="subtitle">${escapeHtml(theme.subtitle ?? "")}</div>
@@ -216,7 +216,7 @@ function buildHtml(theme, artDataUrl, { hero, paper = false }) {
     </div>
     <div class="data">
       <div>&gt; OPERATOR LINK <b>ESTABLISHED</b>  //  SYNC <b>100%</b><span class="barcode"></span></div>
-      <div>&gt; CHANNEL ${escapeHtml(theme.series?.toUpperCase() ?? "TERRA")}-${index}  //  LAT 31.2304  LON 121.4737</div>
+      <div>&gt; CHANNEL ${escapeHtml(theme.series?.toUpperCase() ?? "PRTS")}-${index}  //  LAT 31.2304  LON 121.4737</div>
     </div>
     <div class="seal">${escapeHtml(theme.name)}</div>
   </div>

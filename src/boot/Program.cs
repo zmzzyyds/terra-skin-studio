@@ -80,13 +80,13 @@ namespace Terra
 
         public static string Usage()
         {
-            return "Terra Terminal / 泰拉终端\n\n"
-                + "  TerraBoot.exe [--theme <id>] [--cdp-port 9341] [--restart]\n"
+            return "Arknights PRTS / 明日方舟 PRTS\n\n"
+                + "  ArknightsPRTS.exe [--theme <id>] [--cdp-port 9341] [--restart]\n"
                 + "               [--no-align] [--no-skin] [--no-animation] [--preview] [--external] [--mute]\n"
                 + "               [--restart-if-needed | --no-restart-if-needed]\n"
-                + "  TerraBoot.exe --launch-codex [--restart] [--cdp-port 9341]\n"
-                + "  TerraBoot.exe --self-test\n"
-                + "  TerraBoot.exe --enable-loopback\n";
+                + "  ArknightsPRTS.exe --launch-codex [--restart] [--cdp-port 9341]\n"
+                + "  ArknightsPRTS.exe --self-test\n"
+                + "  ArknightsPRTS.exe --enable-loopback\n";
         }
     }
 
@@ -162,7 +162,7 @@ namespace Terra
                         "Codex 已经在运行，但没有调试端口。\n\n"
                         + "为了应用主题和启动动画，需要关闭并重新打开 Codex。未发送的输入可能会丢失。\n\n"
                         + "现在重启 Codex 吗？",
-                        "泰拉终端 / Terra Terminal",
+                        "明日方舟 PRTS / Arknights PRTS",
                         MessageBoxButton.YesNo,
                         MessageBoxImage.Question,
                         MessageBoxResult.Yes);
@@ -374,7 +374,7 @@ namespace Terra
         {
             List<string> report = new List<string>();
             int errors = 0;
-            report.Add("Terra Terminal self-test");
+            report.Add("Arknights PRTS self-test");
             report.Add("appRoot=" + store.AppRoot);
             report.Add("dataDir=" + store.DataDir);
             report.Add("");

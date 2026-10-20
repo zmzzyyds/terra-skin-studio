@@ -110,7 +110,7 @@
       const tag = document.createElement("span");
       tag.className = "theme-tag";
       tag.textContent = theme.builtin
-        ? (SERIES_LABEL[theme.series] ?? "TERRA")
+        ? (SERIES_LABEL[theme.series] ?? "PRTS")
         : "CUSTOM";
       preview.appendChild(tag);
 
@@ -285,7 +285,9 @@
     $("btn-launch").addEventListener("click", (event) => withButton(event.currentTarget, "启动中...", async () => {
       try {
         const data = await api("/api/codex/launch", { method: "POST", json: { restart: false, boot: true } });
-        toast(data.result?.method === "TerraBoot-boot" ? "正在播放启动动画并打开 Codex..." : "已请求启动 Codex");
+        toast(["ArknightsPRTS-boot", "TerraBoot-boot"].includes(data.result?.method)
+          ? "正在播放启动动画并打开 Codex..."
+          : "已请求启动 Codex");
         setTimeout(() => refresh(true), 2500);
       } catch (error) {
         toast(error.message, "error");

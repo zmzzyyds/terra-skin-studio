@@ -27,7 +27,7 @@
 | 工具 | 用途 | 证据 |
 |---|---|---|
 | Windows PowerShell | 构建和系统管理脚本 | `scripts/build.ps1`、`scripts/enable-loopback.ps1` |
-| .NET Framework `csc.exe` | 编译 x64 `TerraBoot.exe` | `scripts/build.ps1` |
+| .NET Framework `csc.exe` | 编译 x64 `ArknightsPRTS.exe` | `scripts/build.ps1` |
 | Chrome 或 Edge | 仅素材生成期无头渲染 | `tools/gen/render-posters.mjs`、`tools/gen/render-motion.mjs` |
 | ffmpeg / ffprobe | 仅素材生成期编码/转换媒体 | `tools/gen/README.md`、`tools/gen/render-*.mjs` |
 
@@ -48,8 +48,8 @@ npm run restore
 
 ## 5. 环境与配置
 
-- `config/state.example.json` 给出状态结构示例；运行时实际状态在 `%LOCALAPPDATA%\TerraStudio\state.json`。
-- Node 可选环境变量：`TERRA_APP_ROOT`、`TERRA_DATA_DIR`、`TERRA_DEBUG`；素材生成器使用 `CHROME_PATH`、`TERRA_MOTION_DURATION`、`TERRA_MOTION_OUT`、`TERRA_MOTION_SCALE`、`TERRA_MOTION_AUDIO`、`TERRA_MOTION_CRF`。
+- `config/state.example.json` 给出状态结构示例；运行时实际状态在 `%LOCALAPPDATA%\ArknightsPRTS\state.json`。
+- Node 可选环境变量保留 `TERRA_APP_ROOT`、`TERRA_DATA_DIR`、`TERRA_DEBUG` 名称以兼容旧配置；素材生成器使用 `CHROME_PATH`、`TERRA_MOTION_DURATION`、`TERRA_MOTION_OUT`、`TERRA_MOTION_SCALE`、`TERRA_MOTION_AUDIO`、`TERRA_MOTION_CRF`。
 - 没有 `.env.example`；上述环境变量均有代码默认值，不要求秘密凭据。
 - 默认端口为 CDP `9341`、面板 `9342`；运行设置可在 `state.json` 中持久化。
 - 构建输出位于被忽略的 `build/app/`；本机 Node 若位于非默认位置，可确保 `node.exe` 在 `PATH` 中。

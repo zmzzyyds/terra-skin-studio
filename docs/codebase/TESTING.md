@@ -12,7 +12,7 @@
 npm run build
 
 # 启动器构建成功后，可执行的主题/素材自检
-build\app\TerraBoot.exe --self-test
+build\app\ArknightsPRTS.exe --self-test
 
 # 运行期人工诊断入口
 npm run doctor
@@ -33,7 +33,7 @@ npm run list
 |---|---|---|---|
 | 单元测试 | 否 | Node 主题 schema、路径/上传校验；C# 状态和主题模型 | 未找到自动化套件 |
 | 集成测试 | 部分手动诊断 | Codex MSIX、CDP、loopback、HTTP 面板 | `doctor` 只采集当前环境状态，不断言成功标准 |
-| 启动器自检 | 有限 | 主题媒体和 handoff 帧配置 | `TerraBoot.exe --self-test` |
+| 启动器自检 | 有限 | 主题媒体和 handoff 帧配置 | `ArknightsPRTS.exe --self-test` |
 | 端到端测试 | 未配置 | 启动、换肤、还原、卸载和主题创建 | 需要真实 Windows/Codex 环境 |
 
 ## 4. Mock 与隔离

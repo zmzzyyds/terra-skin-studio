@@ -1,4 +1,4 @@
-# Terra Skin Studio 文档
+# Arknights PRTS 文档
 
 本文档按使用场景分组。项目面向 Windows 上的 OpenAI Codex Desktop；实现由 C# 启动器、Node.js 控制器和本地网页面板组成。
 

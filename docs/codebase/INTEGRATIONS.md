@@ -21,7 +21,7 @@
 | `themes/` 用户数据目录 | 面板创建的自定义主题和上传素材 | Node ThemeStore | 位于用户本机，仓库不跟踪 | `src/injector/theme-store.mjs` |
 | `ready.json`、`codex-window.json` | 启动就绪状态和窗口位置 | Controller / C# ThemeStore | 属于交接运行状态 | `src/injector/controller.mjs`、`src/boot/Models.cs` |
 
-数据根目录默认是 `%LOCALAPPDATA%\TerraStudio`；Node 可通过 `TERRA_DATA_DIR` 覆盖。
+数据根目录默认是 `%LOCALAPPDATA%\ArknightsPRTS`；退出旧版控制器后，旧版 `%LOCALAPPDATA%\TerraStudio` 会在首次启动时迁移。Node 可通过保留兼容性的 `TERRA_DATA_DIR` 环境变量覆盖。
 
 ## 3. 凭据和密钥
 
@@ -40,7 +40,7 @@
 
 - 主要观测方式是面板状态、`doctor` CLI 和本地文本日志。
 - 没有 metrics、分布式 tracing 或远程日志上传。
-- Node controller 默认日志：`%LOCALAPPDATA%\TerraStudio\logs\controller.log`；C# 启动器：`boot.log`。
+- Node controller 默认日志：`%LOCALAPPDATA%\ArknightsPRTS\logs\controller.log`；C# 启动器：`boot.log`。
 
 ## 6. 证据
 

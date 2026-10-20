@@ -46,7 +46,7 @@ namespace Terra
 
         public void Normalize(string name)
         {
-            if (String.IsNullOrWhiteSpace(Brand)) Brand = "TERRA TERMINAL // 泰拉终端";
+            if (String.IsNullOrWhiteSpace(Brand)) Brand = "PRTS // 明日方舟 PRTS";
             if (String.IsNullOrWhiteSpace(Headline)) Headline = name;
             if (String.IsNullOrWhiteSpace(Tagline)) Tagline = "PROTOCOL READY";
         }
@@ -322,7 +322,18 @@ namespace Terra
         {
             AppRoot = AppDomain.CurrentDomain.BaseDirectory;
             string local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            DataDir = Path.Combine(local, "TerraStudio");
+            string dataDir = Path.Combine(local, "ArknightsPRTS");
+            string legacyDataDir = Path.Combine(local, "TerraStudio");
+            // 首次改名升级时迁移旧目录，确保设置、日志、自定义主题和窗口位置继续可用。
+            if (!Directory.Exists(dataDir) && Directory.Exists(legacyDataDir))
+            {
+                try { Directory.Move(legacyDataDir, dataDir); }
+                catch
+                {
+                    if (!Directory.Exists(dataDir) && Directory.Exists(legacyDataDir)) dataDir = legacyDataDir;
+                }
+            }
+            DataDir = dataDir;
             BuiltinThemesDir = Path.Combine(AppRoot, "themes");
             CustomThemesDir = Path.Combine(DataDir, "themes");
             LogDir = Path.Combine(DataDir, "logs");

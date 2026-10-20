@@ -39,16 +39,16 @@ $arguments = @(
     '/optimize+',
     '/codepage:65001',
     ('/win32manifest:' + (Join-Path $root 'src\boot\app.manifest')),
-    ('/out:' + (Join-Path $outDir 'TerraBoot.exe'))
+    ('/out:' + (Join-Path $outDir 'ArknightsPRTS.exe'))
 )
 foreach ($reference in $references) { $arguments += '/reference:' + $reference }
 $arguments += $sources
 
 & $compiler @arguments
-if ($LASTEXITCODE -ne 0) { throw 'TerraBoot compilation failed.' }
-Write-Host ('Built: ' + (Join-Path $outDir 'TerraBoot.exe'))
+if ($LASTEXITCODE -ne 0) { throw 'ArknightsPRTS compilation failed.' }
+Write-Host ('Built: ' + (Join-Path $outDir 'ArknightsPRTS.exe'))
 
-Copy-Item -LiteralPath (Join-Path $root 'src\boot\app.config') -Destination (Join-Path $outDir 'TerraBoot.exe.config') -Force
+Copy-Item -LiteralPath (Join-Path $root 'src\boot\app.config') -Destination (Join-Path $outDir 'ArknightsPRTS.exe.config') -Force
 $copies = @(
     @('panel', 'panel'),
     @('themes', 'themes'),
@@ -78,16 +78,16 @@ if (!$NoCopyRuntime) {
         Write-Host 'Copied node.exe'
     }
     else {
-        Write-Warning 'node.exe not found; TerraBoot will use node from PATH.'
+        Write-Warning 'node.exe not found; ArknightsPRTS will use node from PATH.'
     }
 }
 
 $startBat = @'
 @echo off
 cd /d "%~dp0"
-start "" "TerraBoot.exe" %*
+start "" "ArknightsPRTS.exe" %*
 '@
-Set-Content -LiteralPath (Join-Path $outDir '泰拉终端.bat') -Value $startBat -Encoding ASCII
+Set-Content -LiteralPath (Join-Path $outDir '启动PRTS.bat') -Value $startBat -Encoding ASCII
 
 $panelPs1 = @'
 $root = $PSScriptRoot
@@ -105,7 +105,20 @@ $panelBat = @'
 @echo off
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0open-panel.ps1"
 '@
-Set-Content -LiteralPath (Join-Path $outDir '打开控制面板.bat') -Value $panelBat -Encoding ASCII
+Set-Content -LiteralPath (Join-Path $outDir '打开PRTS控制面板.bat') -Value $panelBat -Encoding ASCII
+
+$legacyLaunchers = @('TerraBoot.exe', 'TerraBoot.exe.config', '泰拉终端.bat', '打开控制面板.bat')
+foreach ($name in $legacyLaunchers) {
+    $legacyPath = Join-Path $outDir $name
+    if (Test-Path -LiteralPath $legacyPath -PathType Leaf) {
+        try {
+            Remove-Item -LiteralPath $legacyPath -Force -ErrorAction Stop
+        }
+        catch {
+            Write-Warning ('旧版启动文件仍在使用，请关闭旧版后删除：' + $legacyPath)
+        }
+    }
+}
 
 Write-Host ('Output: ' + $outDir)
-Write-Host 'Run build\app\TerraBoot.exe --self-test next.'
+Write-Host 'Run build\app\ArknightsPRTS.exe --self-test next.'

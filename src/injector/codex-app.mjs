@@ -132,6 +132,10 @@ export async function enableLoopback() {
 
 export function resolveBootExecutable(appRoot) {
   const candidates = [
+    join(appRoot, "ArknightsPRTS.exe"),
+    join(appRoot, "build", "app", "ArknightsPRTS.exe"),
+    join(appRoot, "build", "ArknightsPRTS.exe"),
+    // 兼容用户升级前构建的本地启动器。
     join(appRoot, "TerraBoot.exe"),
     join(appRoot, "build", "app", "TerraBoot.exe"),
     join(appRoot, "build", "TerraBoot.exe"),
@@ -158,7 +162,7 @@ export async function launchCodex(appRoot, {
         windowsHide: true,
       });
       child.unref();
-      return { ok: true, method: "TerraBoot-boot", pid: child.pid ?? null };
+      return { ok: true, method: "ArknightsPRTS-boot", pid: child.pid ?? null };
     }
     const args = ["--launch-codex", "--cdp-port", String(port)];
     if (restart) args.push("--restart");
@@ -174,21 +178,21 @@ export async function launchCodex(appRoot, {
     const parsed = cleanJson(result.stdout);
     if (!parsed) {
       if (result.code === 0 || result.code === undefined) {
-        return { ok: true, method: "TerraBoot", exitCode: 0 };
+        return { ok: true, method: "ArknightsPRTS", exitCode: 0 };
       }
       throw new Error(String(result.stderr || "").trim() || "启动 Codex 失败");
     }
     if (parsed.ok !== true) {
       throw new Error(parsed.error || "启动 Codex 失败");
     }
-    return { ok: true, method: "TerraBoot", ...parsed };
+    return { ok: true, method: "ArknightsPRTS", ...parsed };
   }
 
-  if (boot) throw new Error("找不到 TerraBoot.exe，无法播放启动动画");
+  if (boot) throw new Error("找不到 ArknightsPRTS.exe，无法播放启动动画");
 
   const fallback = join(appRoot, "scripts", "LaunchCodexCdp.ps1");
   if (!existsSync(fallback)) {
-    throw new Error("找不到 TerraBoot.exe 或开发期启动脚本");
+    throw new Error("找不到 ArknightsPRTS.exe 或开发期启动脚本");
   }
   const args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", fallback, "-Port", String(port)];
   if (restart) args.push("-Restart");

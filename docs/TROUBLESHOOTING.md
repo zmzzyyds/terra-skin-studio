@@ -17,8 +17,8 @@ npm run list
 日志位置：
 
 ```text
-%LOCALAPPDATA%\TerraStudio\logs\controller.log
-%LOCALAPPDATA%\TerraStudio\logs\boot.log
+%LOCALAPPDATA%\ArknightsPRTS\logs\controller.log
+%LOCALAPPDATA%\ArknightsPRTS\logs\boot.log
 ```
 
 控制器与启动器日志各自按约 2 MiB 轮转为 `.1` 文件。
@@ -45,7 +45,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\enable-loopback.ps1 
 
 `npm run list` 会显示 `no-hero`、`no-video` 等状态。内置媒体现在随仓库跟踪；若仍显示缺少素材，检查对应 `themes/<id>/theme.json` 路径是否与文件名一致，并确认 `build\app\themes\<id>` 含有这些文件。修改源码主题后重新运行 `npm run build`。
 
-应用内动画最多通过 CDP 注入 64 MiB 视频；较大视频会改用背景图动画。若要播放完整的大视频，可尝试 `TerraBoot.exe --theme <主题id> --external`。当应用内视频无法解码时，也会回退到背景图。
+应用内动画最多通过 CDP 注入 64 MiB 视频；较大视频会改用背景图动画。若要播放完整的大视频，可尝试 `ArknightsPRTS.exe --theme <主题id> --external`。当应用内视频无法解码时，也会回退到背景图。
 
 ## 主题切换入口消失
 
@@ -67,4 +67,4 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\enable-loopback.ps1 
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\uninstall.ps1
 ```
 
-卸载默认保留设置、日志和自定义主题。添加 `-RemoveData` 会删除 `%LOCALAPPDATA%\TerraStudio` 下的运行数据；添加 `-DryRun` 先查看操作计划。
+卸载默认保留设置、日志和自定义主题。添加 `-RemoveData` 会删除 `%LOCALAPPDATA%\ArknightsPRTS` 下的运行数据；添加 `-DryRun` 先查看操作计划。
