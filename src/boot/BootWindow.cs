@@ -99,7 +99,7 @@ namespace Terra
             accentBrush = new SolidColorBrush(accent);
             textBrush = new SolidColorBrush(text);
 
-            Title = "PRTS // " + manifest.Name;
+            Title = "TERRA TERMINAL // " + manifest.Name;
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;
             ShowInTaskbar = false;
@@ -186,7 +186,7 @@ namespace Terra
             label.VerticalAlignment = VerticalAlignment.Top;
             label.Margin = new Thickness(18);
             TextBlock labelText = new TextBlock();
-            labelText.Text = "PRTS // " + manifest.Name.ToUpperInvariant();
+            labelText.Text = "TERRA // " + manifest.Name.ToUpperInvariant();
             labelText.Foreground = accentBrush;
             labelText.FontFamily = new FontFamily("Consolas, Microsoft YaHei UI");
             labelText.FontSize = 12;
@@ -299,7 +299,7 @@ namespace Terra
             wipeTitle.FontSize = 64;
             wipeTitle.FontWeight = FontWeights.Bold;
             wipeSub = new TextBlock();
-            wipeSub.Text = "PRTS // " + manifest.Name.ToUpperInvariant()
+            wipeSub.Text = "TERRA TERMINAL // " + manifest.Name.ToUpperInvariant()
                 + " // " + (manifest.Subtitle ?? "");
             wipeSub.Foreground = new SolidColorBrush(Color.FromArgb(190, 18, 21, 24));
             wipeSub.FontFamily = new FontFamily("Consolas, Microsoft YaHei UI");

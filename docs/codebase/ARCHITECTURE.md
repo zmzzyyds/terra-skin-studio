@@ -9,7 +9,7 @@
 ## 2. 主要数据流
 
 ```text
-ArknightsPRTS.exe / Node CLI
+TerraBoot.exe / Node CLI
         -> Windows 启动或连接 Codex（CDP 9341）
         -> Node 控制器读取 state.json 和 theme.json
         -> CDP 注入 CSS、装饰 DOM 和主题切换入口

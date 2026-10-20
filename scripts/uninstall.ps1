@@ -9,9 +9,7 @@ param(
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 
-$dataDir = Join-Path $env:LOCALAPPDATA 'ArknightsPRTS'
-$legacyDataDir = Join-Path $env:LOCALAPPDATA 'TerraStudio'
-$dataDirs = @($dataDir, $legacyDataDir)
+$dataDir = Join-Path $env:LOCALAPPDATA 'TerraStudio'
 $pfn = $null
 try {
     $package = Get-AppxPackage -Name 'OpenAI.Codex' -ErrorAction SilentlyContinue | Select-Object -First 1
@@ -19,7 +17,7 @@ try {
 }
 catch {}
 
-Write-Host '明日方舟 PRTS 卸载 / PRTS uninstall'
+Write-Host '泰拉终端卸载 / Terra Terminal uninstall'
 Write-Host ('运行数据：' + $dataDir)
 if (!$Yes) {
     $answer = Read-Host '继续？输入 YES'
@@ -43,12 +41,10 @@ foreach ($controller in $controllers) {
     }
 }
 
-foreach ($candidateDir in $dataDirs) {
-    $readyFile = Join-Path $candidateDir 'ready.json'
-    if (Test-Path -LiteralPath $readyFile) {
-        if ($DryRun) { Write-Host ('[dry-run] 删除 ready.json：' + $candidateDir) }
-        else { Remove-Item -LiteralPath $readyFile -Force -ErrorAction SilentlyContinue }
-    }
+$readyFile = Join-Path $dataDir 'ready.json'
+if (Test-Path -LiteralPath $readyFile) {
+    if ($DryRun) { Write-Host '[dry-run] 删除 ready.json' }
+    else { Remove-Item -LiteralPath $readyFile -Force -ErrorAction SilentlyContinue }
 }
 
 if (!$KeepLoopback -and $pfn) {
@@ -69,15 +65,12 @@ if (!$KeepLoopback -and $pfn) {
 }
 
 if ($RemoveData) {
-    foreach ($candidateDir in $dataDirs) {
-        if (!(Test-Path -LiteralPath $candidateDir)) { continue }
-        if ($DryRun) {
-            Write-Host ('[dry-run] 删除运行数据：' + $candidateDir)
-        }
-        else {
-            Write-Host ('删除运行数据（含自定义主题）：' + $candidateDir)
-            Remove-Item -LiteralPath $candidateDir -Recurse -Force -ErrorAction SilentlyContinue
-        }
+    if ($DryRun) {
+        Write-Host ('[dry-run] 删除运行数据：' + $dataDir)
+    }
+    else {
+        Write-Host ('删除运行数据（含自定义主题）：' + $dataDir)
+        Remove-Item -LiteralPath $dataDir -Recurse -Force -ErrorAction SilentlyContinue
     }
 }
 else {

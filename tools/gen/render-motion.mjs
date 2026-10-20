@@ -80,7 +80,7 @@ function buildMotionHtml(theme, artDataUrl) {
   const indexLabel = String(theme.index ?? 1).padStart(2, "0");
   const dateLabel = new Date().toISOString().slice(0, 10).replaceAll("-", ".");
   const lines = [
-    "PRTS OS 3.11  //  OPERATOR TERMINAL",
+    "TERRA OS 3.11  //  OPERATOR TERMINAL",
     "> LINK ESTABLISHED ............ OK",
     `> OPERATOR ${id}  //  ${series}`,
     "> VISUAL CORE SYNC ............ 100",
@@ -223,21 +223,21 @@ function buildMotionHtml(theme, artDataUrl) {
     <div class="accent-block" id="accentBlock"></div>
     <div class="accent-block second" id="accentBlock2"></div>
     <div class="type">
-      <div class="brand" id="brand"><i class="diamond"></i>${escapeHtml(theme.copy?.brand ?? "PRTS")}</div>
+      <div class="brand" id="brand"><i class="diamond"></i>${escapeHtml(theme.copy?.brand ?? "TERRA TERMINAL")}</div>
       <div class="latin" id="latin">${escapeHtml(latinName)}</div>
       <div class="cn" id="cn">${escapeHtml(theme.name)}</div>
       <div class="sub" id="sub">${escapeHtml(theme.subtitle ?? "")}</div>
       <div class="tag" id="tag">${escapeHtml(theme.copy?.tagline ?? "")}</div>
-      <div class="serial">${escapeHtml(theme.series?.toUpperCase() ?? "PRTS")} // OPERATOR // ${escapeHtml(theme.id.toUpperCase())}</div>
+      <div class="serial">${escapeHtml(theme.series?.toUpperCase() ?? "TERRA")} // OPERATOR // ${escapeHtml(theme.id.toUpperCase())}</div>
     </div>
     <div class="hud">
       <div class="index" id="index">${indexLabel}</div>
-      <div class="rail" id="rail">${escapeHtml(theme.series?.toUpperCase() ?? "PRTS")} // OPERATOR // ${escapeHtml(theme.id.toUpperCase())}</div>
+      <div class="rail" id="rail">${escapeHtml(theme.series?.toUpperCase() ?? "TERRA")} // OPERATOR // ${escapeHtml(theme.id.toUpperCase())}</div>
       <div class="circle" id="circle"></div>
       <div class="crosshair" id="crosshair"><i></i><i></i><i></i><i></i></div>
       <div class="ticks" id="ticks"><i style="height:12px"></i><i style="height:22px"></i><i style="height:34px"></i><i style="height:16px"></i><i style="height:42px"></i><i style="height:24px"></i><i style="height:30px"></i><i style="height:14px"></i><i style="height:38px"></i><i style="height:20px"></i></div>
       <div class="barcode" id="barcode"></div>
-      <div class="label" id="label">PRTS // ${escapeHtml(series)}</div>
+      <div class="label" id="label">TERRA TERMINAL // ${escapeHtml(series)}</div>
     </div>
     <div class="scan" id="scan"></div>
     <div class="mega-band" id="megaBand"></div>
@@ -253,10 +253,10 @@ function buildMotionHtml(theme, artDataUrl) {
     <div class="flash" id="flash"></div>
     <div class="bar top" id="barTop"></div>
     <div class="bar bottom" id="barBottom"></div>
-    <div class="boot" id="boot">PRTS // BOOT</div>
+    <div class="boot" id="boot">TERRA TERMINAL // BOOT</div>
     <div class="final" id="final">
       <div class="final-title">LINK ESTABLISHED</div>
-      <div class="final-sub">PRTS // ${escapeHtml(series)} // ${escapeHtml(theme.name)}</div>
+      <div class="final-sub">TERRA TERMINAL // ${escapeHtml(series)} // ${escapeHtml(theme.name)}</div>
       <div class="final-line"></div>
       <div class="final-serial">CODEX // ${escapeHtml(series)} // ${dateLabel}</div>
     </div>

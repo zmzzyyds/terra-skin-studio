@@ -9,9 +9,9 @@
 3. 可点“从背景图取色”，再按需调整主色、辅色、表面色和文字色。
 4. 可选添加 MP4 启动视频，点击“创建并应用”。
 
-浏览器会在本机将背景图裁切成 1920×1080 JPEG（质量 0.86）后上传；原图不会上传。服务器端还会检查文件扩展名、文件头和上传大小。上传上限由 `src/injector/panel-server.mjs` 规定：图片 30 MiB、视频 500 MiB。应用内启动动画通过 CDP 传输视频的上限是 64 MiB；较大的视频会回退到主题背景图。需要播放完整大视频时可尝试独立窗口模式：`ArknightsPRTS.exe --theme <主题id> --external`。
+浏览器会在本机将背景图裁切成 1920×1080 JPEG（质量 0.86）后上传；原图不会上传。服务器端还会检查文件扩展名、文件头和上传大小。上传上限由 `src/injector/panel-server.mjs` 规定：图片 30 MiB、视频 500 MiB。应用内启动动画通过 CDP 传输视频的上限是 64 MiB；较大的视频会回退到主题背景图。需要播放完整大视频时可尝试独立窗口模式：`TerraBoot.exe --theme <主题id> --external`。
 
-自定义主题保存在 `%LOCALAPPDATA%\ArknightsPRTS\themes\custom-<slug>-<hash>\`，不会修改内置主题目录。旧版用户数据会在首次启动时从 `%LOCALAPPDATA%\TerraStudio\` 自动迁移。
+自定义主题保存在 `%LOCALAPPDATA%\TerraStudio\themes\custom-<slug>-<hash>\`，不会修改内置主题目录。
 
 ## 手工新增一个内置主题
 
@@ -45,7 +45,7 @@ New-Item -ItemType Directory -Path themes\my-theme
     "mode": "dark"
   },
   "copy": {
-    "brand": "PRTS // CUSTOM",
+    "brand": "TERRA TERMINAL // CUSTOM",
     "headline": "我的主题",
     "tagline": "PROTOCOL READY"
   },

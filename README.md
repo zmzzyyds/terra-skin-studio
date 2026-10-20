@@ -1,4 +1,4 @@
-# 明日方舟 PRTS | Arknights PRTS
+# Terra Skin Studio · 泰拉皮肤工坊
 
 为 Windows 版 OpenAI Codex Desktop 提供主题背景、配色、界面装饰、启动动画和本机控制面板。主题通过 CDP 注入到运行中的 Codex 页面；程序不修改 Codex 安装文件。
 
@@ -14,7 +14,7 @@
 | `shu` | 黍 |
 | `perlica` | 佩丽卡 |
 
-内置主题的背景图、预览图和启动视频随仓库提供；现有动画与背景素材保持不变。自定义主题则保存在 `%LOCALAPPDATA%\ArknightsPRTS\themes\`。首次升级前请先退出旧版面板/控制器，启动新版时会将 `%LOCALAPPDATA%\TerraStudio\` 数据目录迁移到新目录；若迁移遇到文件占用或权限问题，程序会继续使用旧目录以保留数据。
+内置主题的背景图、预览图和启动视频随仓库提供。自定义主题则保存在 `%LOCALAPPDATA%\TerraStudio\themes\`。
 
 ## 快速开始
 
@@ -39,11 +39,11 @@ npm run build
 powershell -NoProfile -ExecutionPolicy Bypass -File build\app\scripts\enable-loopback.ps1
 ```
 
-在 UAC 对话框中确认后，双击 `build\app\启动PRTS.bat` 启动 Codex 和主题动画。
+在 UAC 对话框中确认后，双击 `build\app\泰拉终端.bat` 启动 Codex 和主题动画。
 
 ### 打开控制面板
 
-双击 `build\app\打开PRTS控制面板.bat`，或在浏览器打开：
+双击 `build\app\打开控制面板.bat`，或在浏览器打开：
 
 ```text
 http://127.0.0.1:9342/
@@ -53,7 +53,7 @@ http://127.0.0.1:9342/
 
 ## 日常使用
 
-- 在面板中点主题卡片，或使用 Codex 窗口内的 `PRTS` 主题胶囊切换主题。
+- 在面板中点主题卡片，或使用 Codex 窗口内的 `TERRA` 主题胶囊切换主题。
 - “外观参数”可调整背景清晰度、面板不透明度、深色/纸白风格、正文可读性和启动动画设置。
 - “还原原生界面”会移除注入的主题样式；之后仍可从面板重新应用主题。
 - 使用面板“自定义主题”可上传背景图和可选 MP4。背景图会在浏览器本机裁切为 1920×1080 JPEG，原始图片不会上传。
@@ -63,7 +63,7 @@ http://127.0.0.1:9342/
 - 首次连接商店版 Codex 需要回环豁免。可用 `build\app\scripts\enable-loopback.ps1 -Status` 查看状态，用 `-Remove` 撤销。
 - 如果 Codex 已运行但没有 CDP 调试端口，启动器可能询问是否重启。重启会关闭 Codex；未发送的输入可能丢失，请先保存。
 - 默认端口为 CDP `9341`、控制面板 `9342`。服务只面向本机使用，不要将端口转发到局域网或公网。
-- 应用内启动视频通过 CDP 传输上限为 64 MiB。超出时会回退到背景图；需要播放完整大视频时可试 `ArknightsPRTS.exe --theme <主题id> --external`。
+- 应用内启动视频通过 CDP 传输上限为 64 MiB。超出时会回退到背景图；需要播放完整大视频时可试 `TerraBoot.exe --theme <主题id> --external`。
 - `build/` 是生成目录。请修改 `src/`、`panel/`、`themes/` 中的源文件，再重新构建；直接编辑 `build/app/` 会在下次构建时被覆盖。
 - 根目录 `LICENSE` 说明软件代码的 MIT 许可，不自动授予主题图像和视频的其他使用权；添加或替换素材前须确认其公开再分发授权。
 

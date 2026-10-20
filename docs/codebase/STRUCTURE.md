@@ -19,11 +19,11 @@
 
 ## 2. 入口点
 
-- 启动器主入口：`src/boot/Program.cs` 中的 `Main`；编译产物为 `ArknightsPRTS.exe`。
+- 启动器主入口：`src/boot/Program.cs` 中的 `Main`；编译产物为 `TerraBoot.exe`。
 - Node CLI：`src/injector/cli.mjs`；`package.json` 的 `list/status/doctor/apply/restore/panel/screenshot` 等脚本指向该文件。
 - 面板页面：`panel/index.html`，载入 `app.js` 和 `style.css`。
 - 构建入口：`scripts/build.ps1`，`npm run build` 调用它。
-- 用户启动包装：`scripts/start.bat` 指向构建目录内的 `ArknightsPRTS.exe`。
+- 用户启动包装：`scripts/start.bat` 指向构建目录内的 `TerraBoot.exe`。
 
 ## 3. 模块边界
 

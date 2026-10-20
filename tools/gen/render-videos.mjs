@@ -45,7 +45,7 @@ function buildFilter(theme) {
   const id = theme.id.toUpperCase();
   const series = String(theme.series ?? "terra").toUpperCase();
   const lines = [
-    { time: 0.7, text: "PRTS OS 3.11  //  OPERATOR TERMINAL", color: accent, size: 24 },
+    { time: 0.7, text: "TERRA OS 3.11  //  OPERATOR TERMINAL", color: accent, size: 24 },
     { time: 1.4, text: "> LINK ESTABLISHED ............. OK", color: text, size: 21 },
     { time: 2.0, text: `> OPERATOR ${id}  //  ${series}`, color: accent, size: 21 },
     { time: 2.7, text: "> VISUAL CORE SYNC ............ 100", color: text, size: 21 },

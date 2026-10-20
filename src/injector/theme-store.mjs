@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import { existsSync, renameSync } from "node:fs";
+import { existsSync } from "node:fs";
 import {
   mkdir,
   readFile,
@@ -132,11 +132,11 @@ function normalizeColors(value) {
 
 function normalizeCopy(value, name) {
   if (value === undefined) {
-    return { brand: "PRTS // 明日方舟 PRTS", headline: name, tagline: "PROTOCOL READY" };
+    return { brand: "TERRA TERMINAL // 泰拉终端", headline: name, tagline: "PROTOCOL READY" };
   }
   if (!isRecord(value)) throw new Error("copy 必须是对象");
   return {
-    brand: asString(value.brand ?? "PRTS // 明日方舟 PRTS", "copy.brand", { max: 120 }),
+    brand: asString(value.brand ?? "TERRA TERMINAL // 泰拉终端", "copy.brand", { max: 120 }),
     headline: asString(value.headline ?? name, "copy.headline", { max: 80 }),
     tagline: asString(value.tagline ?? "PROTOCOL READY", "copy.tagline", { max: 160 }),
   };
@@ -323,18 +323,7 @@ function findAppRoot() {
 function defaultDataDir() {
   const localAppData = process.env.LOCALAPPDATA;
   const base = localAppData && isAbsolute(localAppData) ? localAppData : homedir();
-  const dataDir = join(base, "ArknightsPRTS");
-  const legacyDataDir = join(base, "TerraStudio");
-
-  // 首次改名升级时迁移旧目录，保留主题、状态和日志；并发时沿用已经成功的目录。
-  if (!existsSync(dataDir) && existsSync(legacyDataDir)) {
-    try {
-      renameSync(legacyDataDir, dataDir);
-    } catch {
-      if (!existsSync(dataDir)) return legacyDataDir;
-    }
-  }
-  return dataDir;
+  return join(base, "TerraStudio");
 }
 
 export function createThemeStore(options = {}) {
@@ -597,7 +586,7 @@ export function createThemeStore(options = {}) {
           series,
           colors,
           copy: {
-            brand: "PRTS // CUSTOM",
+            brand: "TERRA TERMINAL // CUSTOM",
             headline: name,
             tagline: subtitle || "CUSTOM PROTOCOL",
           },

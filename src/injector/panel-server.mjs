@@ -222,7 +222,7 @@ export function createPanelServer({ store, controller, port }) {
 
   async function handleApi(req, res, url) {
     if (url.pathname === "/api/ping") {
-      json(res, 200, { ok: true, app: "arknights-prts", port: boundPort });
+      json(res, 200, { ok: true, app: "terra-studio", port: boundPort });
       return;
     }
     if (!sameToken(token, req.headers["x-terra-token"])) {

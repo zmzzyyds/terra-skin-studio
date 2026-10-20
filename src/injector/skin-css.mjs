@@ -60,7 +60,7 @@ export function buildSkinCss({ theme, heroDataUrl, opacity = 0.88, clarity = 0.6
     ? `color-mix(in srgb, ${surface} 82%, transparent)`
     : "transparent";
 
-  return `/* PRTS SKIN:${theme.id} */
+  return `/* TERRA TERMINAL SKIN:${theme.id} */
 :root {
   color-scheme: ${mode} !important;
   --terra-accent: ${accent};
@@ -593,11 +593,11 @@ export function buildInjectionSource({ css, themes, activeId, accent, decor, app
     const top = doc.createElement("i"); top.className = "terra-stripe top"; deco.appendChild(top);
     const bottom = doc.createElement("i"); bottom.className = "terra-stripe bottom"; deco.appendChild(bottom);
     const barcode = doc.createElement("i"); barcode.className = "terra-barcode"; deco.appendChild(barcode);
-    const rail = doc.createElement("span"); rail.className = "terra-rail"; rail.textContent = "PRTS // " + P.activeId.toUpperCase(); deco.appendChild(rail);
-    const stamp = doc.createElement("span"); stamp.className = "terra-stamp"; stamp.textContent = "PRTS"; deco.appendChild(stamp);
+    const rail = doc.createElement("span"); rail.className = "terra-rail"; rail.textContent = "TERRA // " + P.activeId.toUpperCase(); deco.appendChild(rail);
+    const stamp = doc.createElement("span"); stamp.className = "terra-stamp"; stamp.textContent = "TERRA"; deco.appendChild(stamp);
   }
   const rail = deco.querySelector(".terra-rail");
-  if (rail) rail.textContent = "PRTS // " + P.activeId.toUpperCase();
+  if (rail) rail.textContent = "TERRA // " + P.activeId.toUpperCase();
 
   let host = doc.getElementById("terra-switcher-host");
   if (!host) {
@@ -685,18 +685,18 @@ export function buildInjectionSource({ css, themes, activeId, accent, decor, app
 
   const pill = doc.createElement("button");
   pill.className = "pill";
-  pill.setAttribute("aria-label", "明日方舟 PRTS主题");
+  pill.setAttribute("aria-label", "泰拉终端主题");
   const diamond = doc.createElement("i"); diamond.className = "diamond";
   const label = doc.createElement("span");
   const active = P.themes.find((item) => item.id === P.activeId);
-  label.textContent = "PRTS // " + (active ? active.name : P.activeId).toUpperCase();
+  label.textContent = "TERRA // " + (active ? active.name : P.activeId).toUpperCase();
   pill.appendChild(diamond); pill.appendChild(label);
 
   const panel = doc.createElement("div");
   panel.className = "panel";
   panel.hidden = true;
   const head = doc.createElement("div"); head.className = "head";
-  const title = doc.createElement("strong"); title.textContent = "PRTS";
+  const title = doc.createElement("strong"); title.textContent = "TERRA TERMINAL";
   const close = doc.createElement("button"); close.textContent = "×"; close.setAttribute("aria-label", "关闭");
   head.appendChild(title); head.appendChild(close); panel.appendChild(head);
 
