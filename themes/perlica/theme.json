@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "perlica",
+  "name": "佩丽卡",
+  "subtitle": "PERLICA // ENDFIELD",
+  "series": "endfield",
+  "colors": {
+    "accent": "#A9D8F5",
+    "secondary": "#D8B57A",
+    "surface": "#0A1118",
+    "text": "#EDF4FA",
+    "mode": "dark"
+  },
+  "copy": {
+    "brand": "ENDFIELD // OPERATOR",
+    "headline": "佩丽卡",
+    "tagline": "PERLICA // ENDFIELD"
+  },
+  "background": {
+    "image": "hero.jpg",
+    "focus": {
+      "x": 50,
+      "y": 30
+    },
+    "tint": "#0A1118",
+    "tintOpacity": 0.3
+  },
+  "decor": "endfield",
+  "boot": {
+    "mode": "fade",
+    "video": "boot.mp4",
+    "poster": "hero.jpg",
+    "width": 1920,
+    "height": 1080,
+    "holdAt": 0,
+    "transitionStart": 0,
+    "transitionEnd": 0,
+    "maxWaitSeconds": 60,
+    "volume": 0.75
+  },
+  "preview": "hero.jpg"
+}
