@@ -142,7 +142,7 @@ html, body {
     linear-gradient(color-mix(in srgb, ${tint} ${pct(tintOpacity, "30%")}, transparent),
       color-mix(in srgb, ${tint} ${pct(tintOpacity, "30%")}, transparent)),
     ${imageLayer} !important;
-  background-attachment: scroll !important;
+  background-attachment: fixed !important;
 }
 
 main[data-app-shell-main-surface="default"],
