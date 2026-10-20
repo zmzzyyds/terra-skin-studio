@@ -609,6 +609,18 @@ export function buildInjectionSource({ css, themes, activeId, accent, decor, app
   const shadow = host.shadowRoot;
   if (!shadow) return { ok: false, reason: "no-shadow-root" };
 
+  const applySwitcherScale = () => {
+    const current = doc.getElementById("terra-switcher-host");
+    if (!current) return;
+    const scale = Math.min(1.65, Math.max(0.78, window.innerWidth / 1408));
+    current.style.transform = "scale(" + scale + ")";
+    current.style.transformOrigin = "bottom right";
+  };
+  if (!window.__terraSwitcherScale) {
+    window.__terraSwitcherScale = true;
+    window.addEventListener("resize", applySwitcherScale, { passive: true });
+  }
+
   if (!window.__terraHotkeys) {
     window.__terraHotkeys = true;
     doc.addEventListener("keydown", (event) => {
@@ -633,6 +645,7 @@ export function buildInjectionSource({ css, themes, activeId, accent, decor, app
     return { ok: true, theme: P.activeId, hidden: true };
   }
   host.style.cssText = "position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:Bahnschrift,'Microsoft YaHei UI',Consolas,sans-serif;";
+  applySwitcherScale();
 
   const styleEl = doc.createElement("style");
   styleEl.textContent = \`
@@ -719,7 +732,7 @@ export function buildInjectionSource({ css, themes, activeId, accent, decor, app
 
   const foot = doc.createElement("div"); foot.className = "foot";
   const restore = doc.createElement("button"); restore.textContent = "还原原生";
-  restore.addEventListener("click", () => { try { window.__terraRestore(); } catch {} });
+  restore.addEventListener("click", () => { try { window.__terraRestore("restore"); } catch {} });
   const hide = doc.createElement("button"); hide.textContent = "隐藏";
   hide.addEventListener("click", () => {
     try { localStorage.setItem("terra.switcher.hidden", "1"); } catch {}

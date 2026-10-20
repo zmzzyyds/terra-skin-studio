@@ -201,6 +201,7 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
       let heartbeat = null;
       let safety = null;
       let waitingForSkin = false;
+      let keyAbort = null;
       const skinReady = () => {
         if (!P.waitForSkin) return true;
         try {
@@ -214,6 +215,10 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
         finished = true;
         if (heartbeat) clearInterval(heartbeat);
         if (safety) clearTimeout(safety);
+        if (keyAbort) {
+          try { keyAbort.abort(); } catch {}
+          keyAbort = null;
+        }
         overlay.style.clipPath = 'inset(0 0 0 100%)';
         overlay.style.opacity = '0.96';
         setTimeout(() => {
@@ -255,9 +260,13 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
         requestFinish();
       };
       skip.addEventListener('click', skipNow);
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') skipNow();
-      }, { once: true });
+      keyAbort = new AbortController();
+      window.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        skipNow();
+      }, { capture: true, signal: keyAbort.signal });
 
       if (video) {
         const updateProgress = () => {
