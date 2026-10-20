@@ -1,4 +1,4 @@
-# Terra Skin Studio · 泰拉换肤工作室
+# Terra Skin Studio · 泰拉皮肤工坊
 
 为 Windows 版 OpenAI Codex Desktop 提供主题背景、配色、界面装饰、启动动画和本机控制面板。主题通过 CDP 注入到运行中的 Codex 页面；程序不修改 Codex 安装文件。
 
