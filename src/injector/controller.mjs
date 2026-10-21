@@ -294,6 +294,7 @@ export class TerraController {
 
   async setSwitcherHidden(hidden) {
     const value = Boolean(hidden);
+    let applied = false;
     if (this.session) {
       try {
         const expression = value
@@ -304,12 +305,13 @@ export class TerraController {
           await this.store.writeState({ skinEnabled: true });
         }
         await this.applyCurrent(this.session);
+        applied = true;
       } catch (error) {
         this.logger.warn(`切换主题胶囊失败：${error.message}`);
       }
     }
-    this.broadcast("switcher", { hidden: value });
-    return { hidden: value };
+    this.broadcast("switcher", { hidden: value, applied });
+    return { hidden: value, applied, connected: Boolean(this.session) };
   }
 
   async updateSettings(patch) {

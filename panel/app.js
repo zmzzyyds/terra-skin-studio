@@ -334,14 +334,28 @@
       }
     });
 
-    $("btn-switcher").addEventListener("click", async () => {
+    $("btn-switcher").addEventListener("click", (event) => withButton(event.currentTarget, "显示中...", async () => {
       try {
-        await api("/api/switcher", { method: "POST", json: { hidden: false } });
-        toast("已显示 Codex 内主题胶囊");
+        const data = await api("/api/switcher", { method: "POST", json: { hidden: false } });
+        if (data.result?.applied) {
+          toast("已显示 Codex 内主题胶囊");
+          return;
+        }
+        const restart = confirm(
+          "Codex 当前没有调试端口（可能是手动启动的），皮肤和主题胶囊都无法注入。\n\n"
+          + "显示主题胶囊需要关闭并重新打开 Codex；未发送的输入可能丢失。\n\n现在重启并应用吗？",
+        );
+        if (!restart) {
+          toast("已取消；请先点“重启并应用”再显示胶囊", "error");
+          return;
+        }
+        await api("/api/codex/launch", { method: "POST", json: { restart: true, boot: true } });
+        toast("正在重启 Codex，启动后会自动应用主题并显示胶囊...");
+        setTimeout(() => refresh(true), 4000);
       } catch (error) {
         toast(error.message, "error");
       }
-    });
+    }));
 
     $("btn-logs").addEventListener("click", loadLogs);
 
