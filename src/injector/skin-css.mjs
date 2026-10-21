@@ -258,6 +258,10 @@ main[data-app-shell-main-surface] [class*="heading-xl"] {
   color: var(--terra-text) !important;
 }
 
+[class*="_ComposerLayoutRoot_"] {
+  background: transparent !important;
+}
+
 [class*="_ComposerLayoutBody_"],
 [class*="_ComposerLayoutRoot_"] > div {
   background: linear-gradient(135deg,
