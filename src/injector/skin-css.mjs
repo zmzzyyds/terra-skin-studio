@@ -275,6 +275,24 @@ main[data-app-shell-main-surface] [class*="heading-xl"] {
     0 0 28px color-mix(in srgb, ${accent} 12%, transparent) !important;
 }
 
+/* 历史对话另有底部背景及其上方的渐变遮罩；同时清除两者，避免半透明
+ * 输入框周围残留白色横条。保留容器布局和事件区域，不影响新建对话。 */
+[data-thread-scroll-footer="true"] > [class*="_background_"],
+[data-app-action-timeline-scroll]:has([data-composer-placement="thread"]) [class*="_background_"][class*="_fade_"] {
+  background: transparent !important;
+}
+
+/* 用 placement 限定历史对话，保留新建页及其项目/分支栏的现有样式。
+ * 卡片沿用上面的主题渐变，只去掉双层阴影、主题色描边和外围光晕。 */
+[data-codex-composer-root][data-composer-placement="thread"] [class*="_ComposerLayoutRoot_"] {
+  box-shadow: 0 12px 32px color-mix(in srgb, #000 ${paper ? "28%" : "42%"}, transparent) !important;
+}
+
+[data-codex-composer-root][data-composer-placement="thread"] [data-composer-body] {
+  border-color: color-mix(in srgb, ${text} 10%, transparent) !important;
+  box-shadow: none !important;
+}
+
 aside.app-shell-left-panel [aria-selected="true"],
 aside.app-shell-left-panel [data-selected="true"],
 aside.app-shell-left-panel [data-state="active"] {
