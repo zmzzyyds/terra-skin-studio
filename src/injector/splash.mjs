@@ -201,6 +201,7 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
       let heartbeat = null;
       let safety = null;
       let waitingForSkin = false;
+      let skipRequested = false;
       let keyAbort = null;
       const skinReady = () => {
         if (!P.waitForSkin) return true;
@@ -248,7 +249,8 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
             clearInterval(wait);
             return;
           }
-          if (skinReady() || Date.now() - started > 20000) {
+          const limit = skipRequested ? 8000 : 20000;
+          if (skinReady() || Date.now() - started > limit) {
             clearInterval(wait);
             waitingForSkin = false;
             finish();
@@ -256,7 +258,17 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
         }, 250);
       };
       const skipNow = () => {
+        if (finished || skipRequested) return;
+        skipRequested = true;
+        // Stop the watchdog from resuming the video; otherwise Esc would only
+        // blink the pause for one heartbeat tick and then keep playing.
+        if (heartbeat) {
+          clearInterval(heartbeat);
+          heartbeat = null;
+        }
         try { if (video) video.pause(); } catch {}
+        skip.textContent = '正在应用主题...';
+        skip.disabled = true;
         requestFinish();
       };
       skip.addEventListener('click', skipNow);
@@ -265,6 +277,7 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
         if (event.key !== 'Escape') return;
         event.preventDefault();
         event.stopImmediatePropagation();
+        if (event.repeat) return;
         skipNow();
       }, { capture: true, signal: keyAbort.signal });
 
@@ -275,7 +288,7 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
           progress.style.width = percent + '%';
         };
         const resume = () => {
-          if (finished || !video.paused) return;
+          if (finished || skipRequested || !video.paused) return;
           const playing = video.play();
           if (playing && playing.catch) playing.catch(() => {});
         };
@@ -289,7 +302,7 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
         }, { once: true });
         video.addEventListener('timeupdate', updateProgress);
         document.addEventListener('visibilitychange', () => {
-          if (!document.hidden) resume();
+          if (!document.hidden && !skipRequested) resume();
         });
         let metadataLoaded = false;
         safety = setTimeout(() => {
@@ -303,7 +316,7 @@ export async function showSplash({ themeId, port = 9341, timeoutMs = 30000 } = {
           safety = setTimeout(finish, limit);
         }, { once: true });
         heartbeat = setInterval(() => {
-          if (finished) return;
+          if (finished || skipRequested) return;
           updateProgress();
           if (video.duration && video.currentTime >= video.duration - 0.35) {
             requestFinish();
